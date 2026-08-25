@@ -1,0 +1,59 @@
+{
+  "name": "lan-artifacts-pi",
+  "version": "0.1.0",
+  "description": "Pi tools for publishing and managing self-contained HTML artifacts on a LAN Artifacts server",
+  "license": "MIT",
+  "author": "Liu Shiyu",
+  "homepage": "https://github.com/liush2yuxjtu/lan-artifacts-pi#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liush2yuxjtu/lan-artifacts-pi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/liush2yuxjtu/lan-artifacts-pi/issues"
+  },
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "artifacts",
+    "lan",
+    "html"
+  ],
+  "files": [
+    "extensions",
+    "server",
+    "public",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md"
+  ],
+  "bin": {
+    "lan-artifacts": "./server/lan-server.mjs"
+  },
+  "scripts": {
+    "start": "node server/lan-server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm test && npm run typecheck"
+  },
+  "engines": {
+    "node": ">=20.5"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.84.3",
+    "typebox": "^1.3.18",
+    "typescript": "^5.9.3"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions/lan-artifacts.ts"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

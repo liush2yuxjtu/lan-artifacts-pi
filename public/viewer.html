@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LAN Artifact</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+  <style>
+    :root{color-scheme:light dark;--bg:#ecebe6;--paper:#f8f7f2;--panel:#ffffff;--ink:#161714;--muted:#6e7169;--line:#cccec5;--accent:#d95d39;--green:#237552}
+    @media(prefers-color-scheme:dark){:root{--bg:#111310;--paper:#181b17;--panel:#1d211c;--ink:#eef1e9;--muted:#9da398;--line:#373c34;--accent:#f27a54;--green:#78d3a5}}
+    *{box-sizing:border-box}html,body{height:100%}body{margin:0;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif}
+    header{flex:none;display:flex;align-items:center;gap:14px;height:52px;padding:0 16px;background:var(--paper);border-bottom:1px solid var(--line)}
+    #title{font-weight:850;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    select{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:4px;padding:5px 8px;font:inherit;font-size:12px}
+    .spacer{flex:1}
+    .live{display:flex;align-items:center;gap:6px;color:var(--green);font:700 11px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em}
+    .live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+    .live.off{color:var(--muted)}.live.off .live-dot{background:var(--muted);animation:none}
+    @keyframes pulse{50%{opacity:.35}}
+    #pinned{color:var(--accent);font:750 11px ui-monospace,monospace}
+    .aid{color:var(--muted);font:11px ui-monospace,monospace}
+    a.raw{color:var(--muted);font:11px ui-monospace,monospace;text-decoration:none}
+    a.raw:hover{color:var(--ink);text-decoration:underline}
+    #flash{color:var(--accent);font:750 11px ui-monospace,monospace}
+    main{flex:1;min-height:0;padding:12px;display:flex}
+    iframe{flex:1;width:100%;height:100%;border:0;border-radius:7px;background:#fff;box-shadow:0 18px 48px rgba(29,32,25,.09)}
+    .empty{margin:auto;color:var(--muted);font-size:15px}
+    [hidden]{display:none!important}
+    @media(max-width:640px){.aid{display:none}header{gap:8px;padding:0 10px}}
+  </style>
+</head>
+<body>
+  <header>
+    <span id="title">加载中…</span>
+    <label class="sr-only" for="version-picker" hidden>版本</label>
+    <select id="version-picker" aria-label="版本">
+      <option value="latest">latest</option>
+    </select>
+    <span class="spacer"></span>
+    <span id="pinned" hidden></span>
+    <span class="live off" id="live"><span class="live-dot" aria-hidden="true"></span><span id="live-label">连接中…</span></span>
+    <span class="aid" id="artifact-id"></span>
+    <a class="raw" id="raw-link" href="#" target="_blank" rel="noopener">Raw HTML</a>
+    <span id="flash" hidden>已更新到最新</span>
+  </header>
+  <main>
+    <iframe id="frame" sandbox="allow-scripts" title="artifact" hidden></iframe>
+    <div class="empty" id="empty" hidden><p id="empty-msg">Artifact not found</p></div>
+  </main>
+  <script src="/viewer.js"></script>
+</body>
+</html>
