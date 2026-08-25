@@ -28,7 +28,7 @@
     "SECURITY.md"
   ],
   "bin": {
-    "lan-artifacts": "./server/lan-server.mjs"
+    "lan-artifacts": "server/lan-server.mjs"
   },
   "scripts": {
     "start": "node server/lan-server.mjs",
