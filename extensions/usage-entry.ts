@@ -1,9 +1,8 @@
-import { readFileSync } from 'node:fs';
 import type { ExtensionAPI } from '@earendil-works/pi-coding-agent';
-import lanArtifacts from './lan-artifacts.ts';
-import { createUsageFunnel } from './usage-funnel.ts';
+import lanArtifacts from './lan-artifacts';
+import { createUsageFunnel } from './usage-funnel';
 
-const version = String(JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version);
+const version = '0.1.1';
 
 export default function usageInstrumentedLanArtifacts(pi: ExtensionAPI): void {
   const funnel = createUsageFunnel('lan-artifacts-pi', version);
