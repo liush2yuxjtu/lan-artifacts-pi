@@ -1,6 +1,6 @@
 {
   "name": "lan-artifacts-pi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pi tools for publishing and managing self-contained HTML artifacts on a LAN Artifacts server",
   "license": "MIT",
   "author": "Liu Shiyu",
