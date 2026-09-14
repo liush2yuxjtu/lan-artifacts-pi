@@ -50,7 +50,7 @@
   },
   "pi": {
     "extensions": [
-      "./extensions/lan-artifacts.ts"
+      "./extensions/usage-entry.ts"
     ]
   },
   "publishConfig": {
