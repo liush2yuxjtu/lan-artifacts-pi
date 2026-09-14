@@ -5,11 +5,12 @@ import test from "node:test";
 const root = new URL("../", import.meta.url);
 const pkg = JSON.parse(await readFile(new URL("package.json", root), "utf8"));
 const source = await readFile(new URL("extensions/lan-artifacts.ts", root), "utf8");
+const usageEntry = await readFile(new URL("extensions/usage-entry.ts", root), "utf8");
 
 test("package is discoverable by Pi gallery", () => {
   assert.equal(pkg.private, undefined);
   assert.ok(pkg.keywords.includes("pi-package"));
-  assert.deepEqual(pkg.pi.extensions, ["./extensions/lan-artifacts.ts"]);
+  assert.deepEqual(pkg.pi.extensions, ["./extensions/usage-entry.ts"]);
 });
 
 test("published extension has no machine-local secret fallback or hidden prompt injection", () => {
@@ -17,6 +18,7 @@ test("published extension has no machine-local secret fallback or hidden prompt 
   assert.doesNotMatch(source, /before_agent_start/);
   assert.doesNotMatch(source, /context_get/);
   assert.match(source, /LAN_ARTIFACT_WRITE_TOKEN/);
+  assert.match(usageEntry, /artifact_publish/);
 });
 
 test("destructive delete requires interactive human confirmation", () => {
