@@ -1,6 +1,6 @@
 {
   "name": "lan-artifacts-pi",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Pi tools for publishing and managing self-contained HTML artifacts on a LAN Artifacts server",
   "license": "MIT",
   "author": "Liu Shiyu",
@@ -55,5 +55,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@nyn5255/telemetry": "^0.1.1"
   }
 }
